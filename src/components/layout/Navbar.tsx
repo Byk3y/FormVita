@@ -60,11 +60,11 @@ export default function Navbar() {
           {/* Hamburger - shown on all sizes like MEDVi */}
           <button
             onClick={() => setIsOpen(true)}
-            className="flex flex-col justify-center gap-[5px] w-[34px] h-[33px] p-[6px]"
+            className="flex flex-col justify-center gap-[7px] w-[40px] h-[33px] p-[6px]"
             aria-label="Open menu"
           >
-            <span className={`w-full h-[2px] rounded-full ${barColor}`} />
-            <span className={`w-full h-[2px] rounded-full ${barColor}`} />
+            <span className={`w-full h-[2.5px] rounded-full ${barColor}`} />
+            <span className={`w-full h-[2.5px] rounded-full ${barColor}`} />
           </button>
         </div>
       </nav>
