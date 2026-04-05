@@ -1,26 +1,56 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-brand-teal: #0D9488;
+  --color-brand-teal-dark: #0f5e59;
+  --color-brand-navy: #0a1a2e;
+  --color-brand-teal-light: #e9f5f4;
+  --color-text-primary: #242220;
+  --color-text-muted: #38312c;
+  --color-bg-off-white: #faf9f7;
+  --color-bg-warm: #fcf9f7;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --color-accent-green: #2e936f;
+  --color-accent-purple: #956bad;
+  --color-accent-salmon: #eb8771;
+  --color-accent-pink: #d690b3;
+  --color-accent-tan: #a58979;
+  --color-accent-blue: #7aa5c9;
+  --color-accent-gold: #c6a673;
+  --color-accent-teal-muted: #8cb0b2;
+
+  --font-body: var(--font-red-hat-text), sans-serif;
+  --font-heading: var(--font-onest), sans-serif;
+
+  --animate-marquee-left: marquee-left 80s linear infinite;
+  --animate-marquee-right: marquee-right 80s linear infinite;
+  --animate-marquee-left-fast: marquee-left 50s linear infinite;
+
+  @keyframes marquee-left {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes marquee-right {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0); }
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 60px;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
