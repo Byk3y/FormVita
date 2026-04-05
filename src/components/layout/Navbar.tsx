@@ -52,7 +52,7 @@ export default function Navbar() {
         <div className="mx-auto max-w-[1120px] h-full flex items-center justify-between px-[30px]">
           <a
             href="/"
-            className={`font-heading text-[26px] font-black tracking-[-0.52px] uppercase ${textColor}`}
+            className={`font-heading text-[22px] md:text-[26px] font-black tracking-[-0.52px] uppercase ${textColor}`}
           >
             FormV<span className="normal-case">i</span>ta
           </a>
