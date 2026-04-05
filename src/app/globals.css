@@ -42,6 +42,10 @@ html {
   scroll-padding-top: 60px;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   background: #ffffff;
   color: var(--color-text-primary);
