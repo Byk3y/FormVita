@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SITE_NAME } from "@/lib/constants";
 
 const NAV_LINKS = [
@@ -11,16 +11,50 @@ const NAV_LINKS = [
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Show solid background once past the hero area
+      setScrolled(currentScrollY > 100);
+
+      // Hide on scroll down, show on scroll up (ignore tiny movements near top)
+      if (currentScrollY < 80) {
+        setHidden(false);
+      } else if (currentScrollY > lastScrollY + 4) {
+        setHidden(true);
+      } else if (currentScrollY < lastScrollY - 4) {
+        setHidden(false);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const textColor = scrolled ? "text-text-primary" : "text-white";
+  const barColor = scrolled ? "bg-text-primary" : "bg-white";
 
   return (
     <>
-      <nav className="fixed top-0 w-full h-[60px] z-50 bg-transparent">
+      <nav
+        className={`fixed top-0 w-full h-[60px] z-50 transition-transform duration-300 ease-in-out ${
+          hidden ? "-translate-y-full" : "translate-y-0"
+        } ${scrolled ? "bg-white shadow-sm" : "bg-transparent"}`}
+      >
         <div className="mx-auto max-w-[1120px] h-full flex items-center justify-between px-[30px]">
           <a
             href="/"
-            className="font-heading text-[26px] font-black text-white tracking-[-0.52px] uppercase"
+            className={`font-heading text-[26px] font-black tracking-[-0.52px] uppercase ${textColor}`}
           >
-            {SITE_NAME}
+            FormV<span className="normal-case">i</span>ta
           </a>
 
           {/* Hamburger - shown on all sizes like MEDVi */}
@@ -29,8 +63,8 @@ export default function Navbar() {
             className="flex flex-col justify-center gap-[5px] w-[34px] h-[33px] p-[6px]"
             aria-label="Open menu"
           >
-            <span className="w-full h-[2px] bg-white rounded-full" />
-            <span className="w-full h-[2px] bg-white rounded-full" />
+            <span className={`w-full h-[2px] rounded-full ${barColor}`} />
+            <span className={`w-full h-[2px] rounded-full ${barColor}`} />
           </button>
         </div>
       </nav>
