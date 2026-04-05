@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
     <section
-      className="relative w-full flex flex-col items-center justify-start pt-[90px] pb-[160px] px-[20px] md:pt-[55px] md:pb-[200px] md:px-[30px] overflow-hidden z-[1]"
+      className="relative w-full flex flex-col items-center justify-start pt-[70px] pb-[160px] px-[20px] md:pt-[55px] md:pb-[200px] md:px-[30px] overflow-hidden z-[1]"
       style={{
         background: "linear-gradient(166deg, #0f5e59 0%, #0a1a2e 100%)",
       }}
@@ -12,7 +12,7 @@ export default function Hero() {
       </p>
 
       {/* Heading */}
-      <h1 className="font-heading text-[42px] leading-[46px] md:text-[70px] md:leading-[70px] font-semibold tracking-[-1.4px] text-center text-white mb-[16px] md:mb-[20px]">
+      <h1 className="font-heading text-[46px] leading-[50px] md:text-[70px] md:leading-[70px] font-semibold tracking-[-1.4px] text-center text-white mb-[16px] md:mb-[20px]">
         Weight loss,
         <br />
         <span style={{ color: "rgb(119, 180, 160)" }}>simplified</span> for real
