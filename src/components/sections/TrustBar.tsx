@@ -11,7 +11,7 @@ const ICONS: Record<string, React.ReactNode> = {
 
 export default function TrustBar() {
   return (
-    <div className="h-[60px] flex items-center mt-[50px]">
+    <div className="h-[60px] flex items-center mt-[30px] md:mt-[50px]">
       <Marquee speed="normal" innerClassName="gap-[20px]">
         <div className="flex items-center gap-[20px]">
           {TRUST_ITEMS.map((item) => (
