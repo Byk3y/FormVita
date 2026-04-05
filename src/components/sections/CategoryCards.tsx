@@ -48,8 +48,8 @@ const CATEGORIES = [
 
 export default function CategoryCards() {
   return (
-    <div className="relative z-[2] -mt-[134px]">
-      <div className="mx-auto max-w-[980px] px-[30px]">
+    <div className="relative z-[2] -mt-[100px] md:-mt-[134px]">
+      <div className="mx-auto max-w-[980px] px-0 md:px-[30px]">
         {/* Desktop: one white outer container */}
         <div className="hidden md:block bg-[#fafafa] rounded-[24px] overflow-visible p-[14px] pb-0">
           {/* Colored image areas row - with gaps showing white underneath */}
@@ -86,36 +86,38 @@ export default function CategoryCards() {
           </div>
         </div>
 
-        {/* Mobile: scrolling */}
-        <div className="md:hidden">
-          <div className="bg-white rounded-[20px] overflow-hidden">
-            <Marquee speed="normal" innerClassName="gap-0">
-              <div className="flex">
-                {CATEGORIES.map((cat) => (
-                  <a
-                    key={cat.label}
-                    href="#weight-loss"
-                    className="flex flex-col w-[200px] shrink-0"
-                  >
-                    <div
-                      className="h-[100px] rounded-t-[20px] flex items-center justify-center"
-                      style={{ backgroundColor: cat.bgColor }}
-                    >
-                      {cat.icon}
-                    </div>
-                    <div className="h-[45px] flex items-center justify-between px-[16px]">
-                      <span className="text-[13px] font-semibold text-text-primary">
-                        {cat.label}
-                      </span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-text-muted">
-                        <path d="M5 12h14M12 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </a>
-                ))}
+        {/* Mobile: full-width vertical stack with dividers */}
+        <div className="md:hidden bg-[#fafafa] rounded-t-[24px] overflow-hidden">
+          {CATEGORIES.map((cat, i) => (
+            <a
+              key={cat.label}
+              href="#weight-loss"
+              className={`flex items-center gap-[16px] px-[12px] py-[10px] ${
+                i !== CATEGORIES.length - 1 ? "border-b border-[#ececec]" : ""
+              }`}
+            >
+              <div
+                className="w-[100px] h-[78px] rounded-[14px] flex items-center justify-center shrink-0"
+                style={{ backgroundColor: cat.bgColor }}
+              >
+                {cat.icon}
               </div>
-            </Marquee>
-          </div>
+              <span className="flex-1 text-[18px] font-semibold text-text-primary">
+                {cat.label}
+              </span>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="text-text-primary mr-[6px] shrink-0"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </a>
+          ))}
         </div>
       </div>
     </div>
