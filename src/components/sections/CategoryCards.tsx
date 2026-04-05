@@ -48,7 +48,7 @@ const CATEGORIES = [
 
 export default function CategoryCards() {
   return (
-    <div className="relative z-[2] -mt-[100px] md:-mt-[134px]">
+    <div className="relative z-[2] -mt-[88px] md:-mt-[134px]">
       <div className="mx-auto max-w-[980px] px-0 md:px-[30px]">
         {/* Desktop: one white outer container */}
         <div className="hidden md:block bg-[#fafafa] rounded-[24px] overflow-visible p-[14px] pb-0">
@@ -86,36 +86,36 @@ export default function CategoryCards() {
           </div>
         </div>
 
-        {/* Mobile: full-width vertical stack with dividers */}
-        <div className="md:hidden bg-[#fafafa] rounded-t-[24px] overflow-hidden">
-          {CATEGORIES.map((cat, i) => (
+        {/* Mobile: full-width vertical stack of separated cards */}
+        <div className="md:hidden bg-[#fafafa] rounded-t-[24px] p-[12px] flex flex-col gap-[10px]">
+          {CATEGORIES.map((cat) => (
             <a
               key={cat.label}
               href="#weight-loss"
-              className={`flex items-center gap-[16px] px-[12px] py-[10px] ${
-                i !== CATEGORIES.length - 1 ? "border-b border-[#ececec]" : ""
-              }`}
+              className="flex items-stretch bg-[#f4f4f4] rounded-[14px] overflow-hidden h-[86px]"
             >
               <div
-                className="w-[100px] h-[78px] rounded-[14px] flex items-center justify-center shrink-0"
+                className="w-[130px] flex items-center justify-center shrink-0"
                 style={{ backgroundColor: cat.bgColor }}
               >
                 {cat.icon}
               </div>
-              <span className="flex-1 text-[18px] font-semibold text-text-primary">
-                {cat.label}
-              </span>
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="text-text-primary mr-[6px] shrink-0"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              <div className="flex-1 flex items-center justify-between pl-[18px] pr-[16px]">
+                <span className="text-[16px] font-semibold text-black">
+                  {cat.label}
+                </span>
+                <svg
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  className="text-black shrink-0"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </div>
             </a>
           ))}
         </div>
